@@ -1,0 +1,245 @@
+:root {
+  --ink: #0c2233;    /* dark ink color (same as header text) */
+  --muted: #6a7075;  /* softer text */
+  --beige: #fbf7f1;  /* beige background same as header */
+}
+
+.svc {
+  background: var(--beige); /* section background */
+  padding: clamp(56px, 8vw, 90px) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.svc__wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+.svc__head {
+  text-align: center;
+  margin-bottom: 36px;
+  animation: fadeInUp 1s ease-out;
+}
+
+.svc__title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0;
+}
+
+.svc__sub {
+  color: var(--muted);
+  max-width: 68ch;
+  margin: 10px auto 0;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Grid */
+.svc__grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(4, 1fr);
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+/* Laptop (1024px and below) */
+@media (max-width: 1024px) {
+  .svc {
+    padding: clamp(48px, 6vw, 80px) 0;
+  }
+  
+  .svc__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .svc-card {
+    padding: 24px 18px;
+  }
+  
+  .svc-card__icon {
+    height: 68px;
+    width: 68px;
+    margin-bottom: 16px;
+  }
+}
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+  .svc {
+    padding: clamp(40px, 5vw, 70px) 0;
+  }
+  
+  .svc__wrap {
+    padding: 0 16px;
+  }
+  
+  .svc__head {
+    margin-bottom: 32px;
+  }
+  
+  .svc__grid {
+    gap: 18px;
+  }
+  
+  .svc-card {
+    padding: 20px 16px;
+  }
+  
+  .svc-card__icon {
+    height: 64px;
+    width: 64px;
+    margin-bottom: 14px;
+  }
+  
+  .svc-card__title {
+    font-size: 17px;
+  }
+  
+  .svc-card__desc {
+    font-size: 14px;
+  }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+  .svc {
+    padding: clamp(32px, 4vw, 60px) 0;
+  }
+  
+  .svc__wrap {
+    padding: 0 12px;
+  }
+  
+  .svc__head {
+    margin-bottom: 28px;
+  }
+  
+  .svc__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .svc-card {
+    padding: 18px 14px;
+  }
+  
+  .svc-card__icon {
+    height: 60px;
+    width: 60px;
+    margin-bottom: 12px;
+  }
+  
+  .svc-card__title {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+  
+  .svc-card__desc {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+
+/* Card */
+.svc-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 28px 20px;
+  text-align: center;
+  box-shadow: 0 8px 24px -16px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: pulse 4s ease-in-out infinite;
+}
+.svc-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(12, 34, 51, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+.svc-card:hover::before {
+  left: 100%;
+}
+.svc-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.3);
+  animation-play-state: paused;
+}
+
+/* Circular Icon (beige background, ink icon) */
+.svc-card__icon {
+  height: 74px;
+  width: 74px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: var(--beige);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink); /* icon color */
+  font-size: 26px;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+}
+.svc-card:hover .svc-card__icon {
+  transform: scale(1.1) rotate(5deg);
+  background: var(--ink);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(12, 34, 51, 0.3);
+}
+
+.svc-card__title {
+  margin: 0 0 8px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--ink);
+  transition: color 0.3s ease;
+}
+
+.svc-card:hover .svc-card__title {
+  color: var(--ink);
+}
+
+.svc-card__desc {
+  margin: 0;
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+.svc-card:hover .svc-card__desc {
+  color: var(--text-dark);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 8px 24px -16px rgba(0, 0, 0, 0.15);
+  }
+  50% {
+    box-shadow: 0 12px 28px -12px rgba(12, 34, 51, 0.2);
+  }
+}
