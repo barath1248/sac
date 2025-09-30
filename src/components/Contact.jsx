@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
-import "../styles/Contact.css";
+import "../styles/contact.css";
 
 // ⬇️ Replace these with your details
 const WHATSAPP_NUMBER = "+91 8008778790";        // countrycode + number, no + or spaces
